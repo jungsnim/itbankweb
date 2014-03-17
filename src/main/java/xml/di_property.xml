@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	
+	
+	
+	<bean name="oneexam" class="model.Exam">
+		<property name="jum" value="55"/>
+		<property name="mem" ref="one"/>
+	</bean>
+	<bean name="one" class="model.Mem">
+		<property name="id" value="100"/>
+		<property name="name" value="one"/>
+		<property name="tel" value="1234567"/>
+	</bean>
+	
+	<bean name="twoexam" class="model.Exam">
+		<property name="jum" value="89"/>
+		<property name="mem" ref="two"/>
+	</bean>
+	<bean name="two" class="model.Mem">
+		<property name="id" value="100"/>
+		<property name="name" value="two"/>
+		<property name="tel" value="987654"/>
+	</bean>
+	
+	<bean name="threeexam" class="model.Exam">
+		<property name="jum" value="20"/>
+		<property name="mem" ref="three"/>
+	</bean>
+	<bean name="three" class="model.Mem">
+		<property name="id" value="100"/>
+		<property name="name" value="three"/>
+		<property name="tel" value="987654"/>
+	</bean>
+	
+	<bean name="fourexam" class="model.Exam">
+		<property name="jum" value="57"/>
+		<property name="mem" ref="four"/>
+	</bean>
+	<bean name="four" class="model.Mem">
+		<property name="id" value="100"/>
+		<property name="name" value="four"/>
+		<property name="tel" value="987654"/>
+	</bean>
+	
+	<bean name="fiveexam" class="model.Exam">
+		<property name="jum" value="80"/>
+		<property name="mem" ref="five"/>
+	</bean>
+	<bean name="five" class="model.Mem">
+		<property name="id" value="100"/>
+		<property name="name" value="five"/>
+		<property name="tel" value="987654"/>
+	</bean>
+	
+	<bean name="examResult" class="model.ExamResult">
+		<constructor-arg ref="oneexam"/>
+		<constructor-arg ref="twoexam"/>
+		<constructor-arg ref="threeexam"/>
+		<constructor-arg ref="fourexam"/>
+		<constructor-arg ref="fiveexam"/>
+	</bean>
+	
+</beans>
