@@ -3,6 +3,15 @@ package model;
 public class Exam {
 	Mem mem;
 	int jum;
+	
+	public Exam() {
+		// TODO Auto-generated constructor stub
+	}
+	public Exam(Mem mem, int jum) {
+		super();
+		this.mem = mem;
+		this.jum = jum;
+	}
 	public Mem getMem() {
 		return mem;
 	}

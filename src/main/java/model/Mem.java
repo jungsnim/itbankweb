@@ -1,12 +1,19 @@
 package model;
 
-public class Mem {
+public class Mem extends Person{
 	String name,tel;
 	int id;
 	public Mem() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Mem(String name, String tel, int id) {
+		super();
+		this.name = name;
+		this.tel = tel;
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}

@@ -6,6 +6,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import di.Dao;
+import service.LookUpMethod_c;
 import service.OracleDao;
 import model.Bean;
 import model.ExamResult;
@@ -21,8 +22,15 @@ public class Di_Property {
 		
 		BeanFactory factory = new XmlBeanFactory(resource);
 		
+		//System.out.println(factory.getBean("param"));
+		//System.out.println(factory.getBean("paramexam"));
+		//System.out.println(factory.getBean("consexam"));
 		ExamResult exRes = (ExamResult)factory.getBean("examResult");
 		exRes.print();
+		
+		LookUpMethod_c lu = factory.getBean("lookUpMethod_c",LookUpMethod_c.class);
+		
+		System.out.println(lu.getMem());
 	}
 
 }
