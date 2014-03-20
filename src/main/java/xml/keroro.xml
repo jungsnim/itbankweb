@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-3.2.xsd
+ http://www.springframework.org/schema/aop
+ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+ 
+ 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+ 	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+ 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+ 	<bean class="org.springframework.context.annotation.ConfigurationClassPostProcessor"/>
+ 	<context:component-scan base-package="aop"/>
+ 	
+ 	<bean name="keroro" class="aop.keroro.Keroro"/>
+ 	<bean name="dullee" class="aop.dullee.Dullee"/>
+ 	<aop:config>
+ 		<aop:aspect id="ker" ref="keroro">
+ 			<aop:pointcut expression="execution(public * aop..*(..))" id="kerMethod"/>
+ 			<aop:before method="before" pointcut-ref="kerMethod"/>
+ 			<aop:after-returning method="afterReturning" pointcut-ref="kerMethod" returning="res"/>
+ 		</aop:aspect>
+ 		<aop:aspect id="dul" ref="dullee">
+ 			<aop:pointcut expression="execution(public * aop..*(..))" id="dulMethod"/>
+ 			<aop:after-throwing method="afterThrowing" pointcut-ref="dulMethod" throwing="e"/>
+ 			<aop:after method="ffinally" pointcut-ref="dulMethod"/>
+ 		</aop:aspect>
+ 	</aop:config>
+</beans>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+ 
+ 	<bean name="mingDDo" class="model.MingDDo" autowire="byName"/>
+ 	<bean name="mingDDo2" class="model.MingDDo" autowire="byName"
+ 	p:jum-ref="jumsu"
+ 	p:mm-ref="mem"/>
+ 	<!-- 로컬 파라메터 지정은 항상 우선순위가 높다 -->
+ 	<!-- 이름이 같은데 타입이 다를경우 에러를 뱉는다. -->
+ 	<bean name="mingDDo3" class="model.MingDDo" autowire="constructor"/>
+ 	
+ 	<bean name="mem" class="model.Mem"
+ 	 p:id="1" p:name="밍또" p:tel="111-1111"/>
+ 	 
+ 	 <bean name="mm" class="model.Mem"
+ 	 p:id="2" p:name="밍또2" p:tel="2222-2222"/>
+ 	 
+ 	 
+ 	<bean name="jumsu" class="model.Jumsu"
+ 	p:kor="10" p:eng="100" p:mat="50"/>
+ 	<!--같은 타입이 2개일경우 costructor에서 값을 찾지 못한다.
+ 	constructor는 이름을 먼저 찾고 같은이름이 없을 경우 타입을 검색한다.
+ 	타입이 같은것이 두개있을경우 null반환 <bean name="jumsu2" class="model.Jumsu"
+ 	p:kor="10" p:eng="100" p:mat="50"/> -->
+ 	<bean name="ban" class="model.Ban"
+ 	p:ban="우리반" p:school="우리학교"/>
+
+</beans>
